@@ -1,0 +1,10 @@
+C:\Users\Brian\source\repos\Sorting\Sorting\bin\Debug\Sorting.exe.config
+C:\Users\Brian\source\repos\Sorting\Sorting\bin\Debug\Sorting.exe
+C:\Users\Brian\source\repos\Sorting\Sorting\bin\Debug\Sorting.pdb
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.csprojAssemblyReference.cache
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.Form1.resources
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.Properties.Resources.resources
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.csproj.GenerateResource.cache
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.csproj.CoreCompileInputs.cache
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.exe
+C:\Users\Brian\source\repos\Sorting\Sorting\obj\Debug\Sorting.pdb
