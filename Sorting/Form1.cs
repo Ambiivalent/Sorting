@@ -18,6 +18,44 @@ namespace Sorting
             InitializeComponent();
         }
 
+        public void Sort(string x)
+        {
+            int counter = 0;
+            string folderLocation = textRoot.Text;
+
+            string prefix = textPrefix.Text;
+            if (string.IsNullOrWhiteSpace(textPrefix.Text))
+            {
+                prefix = " ";
+            }
+            DirectoryInfo d = new DirectoryInfo(folderLocation);
+            FileInfo[] infos = d.GetFiles();
+            foreach (FileInfo f in infos)
+            {
+                if  (checkFileType.Checked)
+                {
+                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + x) && f.FullName.Contains(x))
+                    {
+                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + x));
+                        counter++;
+                    }
+                    else
+                        counter++;
+                }
+                else
+                {
+                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + x))
+                    {
+                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + x));
+                        counter++;
+                    }
+                    else
+                        counter++;
+                }
+
+            }
+        }
+
         public static class Prompt
         {
             public static string ShowDialog(string text, string caption)
@@ -73,105 +111,38 @@ namespace Sorting
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            string sortValue = comboSort.Text;
-            string folderLocation = textRoot.Text;
-
-            if (sortValue.Equals("Sort JPG")){
-                string prefix = textPrefix.Text;
-                if (string.IsNullOrWhiteSpace(textPrefix.Text))
-                {
-                    prefix = " ";
-                }
-                DirectoryInfo d = new DirectoryInfo(folderLocation);
-                FileInfo[] infos = d.GetFiles();
-                foreach (FileInfo f in infos)
-                {
-                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + ".jpg"))
-                    {
-                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + ".jpg"));
-                        counter++;
-                    }
-                    else
-                        counter++;
-                    
-                }
-
+            if (comboSort.Text.Equals("Sort JPG")){
+                Sort(".jpg");
             }
 
-            else if (sortValue.Equals("Sort Video (mp4)"))
+            else if (comboSort.Text.Equals("Sort Video (mp4)"))
             {
-                string prefix = textPrefix.Text;
-                if (string.IsNullOrWhiteSpace(textPrefix.Text))
-                {
-                    prefix = " ";
-                }
-                DirectoryInfo d = new DirectoryInfo(folderLocation);
-                FileInfo[] infos = d.GetFiles();
-                foreach (FileInfo f in infos)
-                {
-                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + ".mp4"))
-                    {
-                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + ".mp4"));
-                        counter++;
-                    }
-                    else
-                        counter++;
-                }
-
+                Sort(".mp4");
             }
-            else if (sortValue.Equals("Sort PDF"))
+            else if (comboSort.Text.Equals("Sort PDF"))
             {
-                string prefix = textPrefix.Text;
-                if (string.IsNullOrWhiteSpace(textPrefix.Text))
-                {
-                    prefix = " ";
-                }
-                DirectoryInfo d = new DirectoryInfo(folderLocation);
-                FileInfo[] infos = d.GetFiles();
-                foreach (FileInfo f in infos)
-                {
-                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + ".pdf"))
-                    {
-                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + ".pdf"));
-                        counter++;
-                    }
-                    else
-                        counter++;
-                }
-
+                Sort(".pdf");
             }
 
             else
             {
                 string fileType = Prompt.ShowDialog("Custom File Type", "Input a file type");
-                string prefix = textPrefix.Text;
-                if (string.IsNullOrWhiteSpace(textPrefix.Text))
-                {
-                    prefix = " ";
-                }
-                DirectoryInfo d = new DirectoryInfo(folderLocation);
-                FileInfo[] infos = d.GetFiles();
-                foreach (FileInfo f in infos)
-                {
-                    if (!File.Exists(folderLocation + "\\" + prefix + counter.ToString() + fileType))
-                    {
-                        File.Move(f.FullName, Path.Combine(f.DirectoryName, prefix + counter.ToString() + fileType));
-                        counter++;
-                    }
-                    else
-                        counter++;
-                }
+                Sort(fileType);
 
             }
 
-            MessageBox.Show("Complete");
+            MessageBox.Show("Completed Sort. Press OK to continue.");
 
 
         }
 
         private void textRoot_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void checkFileType_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

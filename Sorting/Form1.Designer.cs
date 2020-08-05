@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnSort = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboSort = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.checkFileType = new System.Windows.Forms.CheckBox();
+            this.FileType = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnSort
@@ -136,11 +139,26 @@
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // checkFileType
+            // 
+            this.checkFileType.AutoSize = true;
+            this.checkFileType.Location = new System.Drawing.Point(667, 113);
+            this.checkFileType.Name = "checkFileType";
+            this.checkFileType.Size = new System.Drawing.Size(209, 24);
+            this.checkFileType.TabIndex = 9;
+            this.checkFileType.Text = "Ignore Other File Types?";
+            this.FileType.SetToolTip(this.checkFileType, "Will not sort file types of different extensions. ");
+            this.checkFileType.UseVisualStyleBackColor = true;
+            this.checkFileType.CheckedChanged += new System.EventHandler(this.checkFileType_CheckedChanged);
+            // 
             // Form1
             // 
+            this.AccessibleDescription = "Autosort Program";
+            this.AccessibleName = "Autosort Program";
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 522);
+            this.ClientSize = new System.Drawing.Size(1101, 480);
+            this.Controls.Add(this.checkFileType);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textPrefix);
             this.Controls.Add(this.textRoot);
@@ -150,7 +168,10 @@
             this.Controls.Add(this.comboSort);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSort);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AutoSorting Program";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -171,6 +192,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox checkFileType;
+        private System.Windows.Forms.ToolTip FileType;
     }
 }
 
